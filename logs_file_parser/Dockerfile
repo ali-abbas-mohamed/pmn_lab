@@ -11,12 +11,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy app code
 COPY . .
 
-# Expose port
+# Expose Flask port
 EXPOSE 5000
 
-# Environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-
 # Run the app
-CMD ["flask", "run"]
+CMD ["python", "app.py"]

@@ -3,34 +3,26 @@ version: "3.9"
 services:
   web:
     build: .
-    container_name: audit_web
+    container_name: flask_app
+    ports:
+      - "5000:5000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/auditdb
-      - API_KEY=supersecretkey
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432/logsdb
     depends_on:
       - db
 
   db:
     image: postgres:15
-    container_name: audit_db
+    container_name: postgres_db
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: auditdb
+      POSTGRES_DB: logsdb
+    ports:
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-
-  nginx:
-    image: nginx:latest
-    container_name: audit_nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./static:/usr/share/nginx/html/static:ro
-    depends_on:
-      - web
 
 volumes:
   pgdata:
