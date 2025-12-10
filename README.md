@@ -1,4 +1,4 @@
-_**logs file generator usage**_
+# logs file generator usage
 python audit_generator.py
 
 # Prepopulate 3 days of logs (50 entries each), then run live with daily rotation
@@ -9,13 +9,13 @@ python audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 -
 
 python audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 --prepopulate 2 --entries 100
 
-**How to Run with PostgreSQL
-- Install PostgreSQL (Ubuntu example):**__
+# How to Run with PostgreSQL
+#     Install PostgreSQL (Ubuntu example):
 
 sudo apt update
 sudo apt install postgresql postgresql-contrib -y
 
-**- Create database and user:**__
+# Create database and user
 sudo -u postgres psql
 CREATE DATABASE logsdb;
 CREATE USER postgres WITH PASSWORD 'postgres';
