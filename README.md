@@ -2,12 +2,12 @@
 python audit_generator.py
 
 # Prepopulate 3 days of logs (50 entries each), then run live with daily rotation
-python audit_generator.py --file ue_audit.log --rotation day --prepopulate 3 --entries 50
+python3 audit_generator.py --file ue_audit.log --rotation day --prepopulate 3 --entries 50
 
 # Prepopulate 2 days of logs, then run live with size-based rotation (100 KB per file)
-python audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 --prepopulate 2
+python3 audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 --prepopulate 2
 
-python audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 --prepopulate 2 --entries 100000
+python3 audit_generator.py --file ue_audit.log --rotation size --maxsize 100000 --prepopulate 2 --entries 100000
 
 # start simple python http server
 Under the log directory
@@ -30,6 +30,10 @@ CREATE USER postgres WITH PASSWORD 'postgres';
 GRANT ALL PRIVILEGES ON DATABASE logsdb TO postgres;
 
 \q
+
+sudo -i -u postgres
+psql -h 127.0.0.1 -p 5432 -U postgres -d logsdb
+
 
 # Set environment variable:
 
