@@ -17,7 +17,11 @@ sudo apt install postgresql postgresql-contrib -y
 
 # Create database and user
 sudo -u postgres psql
+
 CREATE DATABASE logsdb;
+
 CREATE USER postgres WITH PASSWORD 'postgres';
+
 GRANT ALL PRIVILEGES ON DATABASE logsdb TO postgres;
+
 \q
