@@ -31,3 +31,30 @@ GRANT ALL PRIVILEGES ON DATABASE logsdb TO postgres;
 export SQLALCHEMY_DATABASE_URI="postgresql://postgres:postgres@localhost:5432/logsdb"
 export REMOTE_LOG_URL="https://yourserver.com/sample.log"
 
+# How to Use the REST API
+- Get all logs
+   GET http://localhost:5000/api/logs
+
+- Filter by user
+  GET http://localhost:5000/api/logs?user=Alice
+
+- Filter by date
+  GET http://localhost:5000/api/logs?date=2025-12-01
+
+- Filter by both
+  GET http://localhost:5000/api/logs?user=John&date=2025-12-05
+  
+- Response example:
+  
+  [
+    {
+      "timestamp": "2025-12-01T13:02:33",
+      "level": "INFO",
+      "user": "Alice",
+      "message": "Login successful",
+      "role": "Manager"
+  }
+]
+
+
+
