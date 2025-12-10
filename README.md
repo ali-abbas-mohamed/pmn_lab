@@ -25,3 +25,9 @@ CREATE USER postgres WITH PASSWORD 'postgres';
 GRANT ALL PRIVILEGES ON DATABASE logsdb TO postgres;
 
 \q
+
+# Set environment variable:
+
+export SQLALCHEMY_DATABASE_URI="postgresql://postgres:postgres@localhost:5432/logsdb"
+export REMOTE_LOG_URL="https://yourserver.com/sample.log"
+
