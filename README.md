@@ -32,8 +32,10 @@ GRANT ALL PRIVILEGES ON DATABASE logsdb TO postgres;
 \q
 
 sudo -i -u postgres
+
 psql -h 127.0.0.1 -p 5432 -U postgres -d logsdb
 
+SELECT * from LOG_ENTRY;
 
 # Set environment variable:
 
